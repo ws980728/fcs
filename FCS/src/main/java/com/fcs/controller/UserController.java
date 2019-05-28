@@ -39,7 +39,8 @@ public class UserController {
 	
 	@RequestMapping(value = "/changeCode")
     public void getVerify(HttpServletRequest request, HttpServletResponse response,HttpSession session){
-        response.setContentType("image/jpeg");//设置相应类型,告诉浏览器输出的内容为图片
+		System.out.println("第一次session"+session.toString());
+		response.setContentType("image/jpeg");//设置相应类型,告诉浏览器输出的内容为图片
         response.setHeader("Pragma", "No-cache");//设置响应头信息，告诉浏览器不要缓存此内容
         response.setHeader("Cache-Control", "no-cache");
         response.setDateHeader("Expire", 0);
@@ -49,7 +50,7 @@ public class UserController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(session.toString());
+        System.out.println("第一次session"+session.toString());
     }
 
 	// 用户注册
