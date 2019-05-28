@@ -13,8 +13,9 @@ public class UserService {
 	private UserAccountMapper userAccountMapper;
 
 	// 新增用户
-	public void insertUserAccount(UserAccount userAccount) {
-		userAccountMapper.insertSelective(userAccount);
+	public int insertUserAccount(UserAccount userAccount) {
+		//userAccountMapper.insertSelective(userAccount);
+		return userAccountMapper.insertUserAccount(userAccount);
 	}
 
 }

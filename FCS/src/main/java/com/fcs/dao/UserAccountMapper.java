@@ -6,6 +6,10 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface UserAccountMapper {
+	
+	//新增用户,并返回UUID
+	int insertUserAccount(UserAccount userAccount);
+	
     int countByExample(UserAccountExample example);
 
     int deleteByExample(UserAccountExample example);

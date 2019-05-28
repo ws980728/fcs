@@ -1,72 +1,79 @@
 package com.fcs.bean;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-
 public class UserAccount {
-	@NotEmpty
-    private String userId;
+	private String userId;
 
-	@NotEmpty
-    private String userAccount;
+	private String userAccount;
 
-	@NotEmpty
-    private String userPassword;
+	private String userPassword;
 
-	@NotNull
-    private Integer userType;
+	private Integer userType;
 
-	@NotEmpty
-    private String userRegtime;
+	private String userRegtime;
 
-	@NotNull
-    private Integer userStatus;
+	private Integer userStatus;
 
-    public String getUserId() {
-        return userId;
-    }
+	public UserAccount() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-    public void setUserId(String userId) {
-        this.userId = userId == null ? null : userId.trim();
-    }
+	public UserAccount(String userId, String userAccount, String userPassword, Integer userType, String userRegtime,
+			Integer userStatus) {
+		super();
+		this.userId = userId;
+		this.userAccount = userAccount;
+		this.userPassword = userPassword;
+		this.userType = userType;
+		this.userRegtime = userRegtime;
+		this.userStatus = userStatus;
+	}
 
-    public String getUserAccount() {
-        return userAccount;
-    }
+	public String getUserId() {
+		return userId;
+	}
 
-    public void setUserAccount(String userAccount) {
-        this.userAccount = userAccount == null ? null : userAccount.trim();
-    }
+	public void setUserId(String userId) {
+		this.userId = userId == null ? null : userId.trim();
+	}
 
-    public String getUserPassword() {
-        return userPassword;
-    }
+	public String getUserAccount() {
+		return userAccount;
+	}
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword == null ? null : userPassword.trim();
-    }
+	public void setUserAccount(String userAccount) {
+		this.userAccount = userAccount == null ? null : userAccount.trim();
+	}
 
-    public Integer getUserType() {
-        return userType;
-    }
+	public String getUserPassword() {
+		return userPassword;
+	}
 
-    public void setUserType(Integer userType) {
-        this.userType = userType;
-    }
+	public void setUserPassword(String userPassword) {
+		this.userPassword = userPassword == null ? null : userPassword.trim();
+	}
 
-    public String getUserRegtime() {
-        return userRegtime;
-    }
+	public Integer getUserType() {
+		return userType;
+	}
 
-    public void setUserRegtime(String userRegtime) {
-        this.userRegtime = userRegtime == null ? null : userRegtime.trim();
-    }
+	public void setUserType(Integer userType) {
+		this.userType = userType;
+	}
 
-    public Integer getUserStatus() {
-        return userStatus;
-    }
+	public String getUserRegtime() {
+		return userRegtime;
+	}
 
-    public void setUserStatus(Integer userStatus) {
-        this.userStatus = userStatus;
-    }
+	public void setUserRegtime(String userRegtime) {
+		this.userRegtime = userRegtime == null ? null : userRegtime.trim();
+	}
+
+	public Integer getUserStatus() {
+		return userStatus;
+	}
+
+	public void setUserStatus(Integer userStatus) {
+		this.userStatus = userStatus;
+	}
 }
