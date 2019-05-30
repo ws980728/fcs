@@ -36,7 +36,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	
+	//获取验证码
 	@RequestMapping(value = "/changeCode")
     public void getVerify(HttpServletRequest request, HttpServletResponse response,HttpSession session){
 		System.out.println("第一次session"+session.toString());

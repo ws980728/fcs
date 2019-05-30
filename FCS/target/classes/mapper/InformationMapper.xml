@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fcs.dao.InformationMapper">
+	<resultMap id="typeMap" type="Type">
+		<id column="type_id" property="typeId" jdbcType="INTEGER" />
+		<result column="type_number" property="typeNumber"
+			jdbcType="INTEGER" />
+		<result column="type_supcategpry" property="typeSupcategpry"
+			jdbcType="VARCHAR" />
+		<result column="type_name" property="typeName"
+			jdbcType="VARCHAR" />
+	</resultMap>
+
+	<resultMap id="InformationMap" type="InformationList">
+		<id column="information_id" property="informationId"
+			jdbcType="VARCHAR" />
+		<result column="information_topic" property="informationTopic"
+			jdbcType="VARCHAR" />
+		<result column="information_content"
+			property="informationContent" jdbcType="VARCHAR" />
+		<result column="information_ reltime"
+			property="informationReltime" jdbcType="VARCHAR" />
+		<result column="information_img" property="informationImg"
+			jdbcType="VARCHAR" />
+	</resultMap>
+
+	<resultMap id="InformationDetail" type="Information">
+		<id column="information_id" property="informationId"
+			jdbcType="VARCHAR" />
+		<result column="information_topic" property="informationTopic"
+			jdbcType="VARCHAR" />
+		<result column="information_author"
+			property="informationAuthor" jdbcType="VARCHAR" />
+		<result column="information_content"
+			property="informationContent" jdbcType="VARCHAR" />
+		<result column="information_fabulous"
+			property="informationFabulous" jdbcType="INTEGER" />
+		<result column="information_ reltime"
+			property="informationReltime" jdbcType="VARCHAR" />
+		<result column="information_status"
+			property="informationStatus" jdbcType="INTEGER" />
+		<result column="information_img" property="informationImg"
+			jdbcType="VARCHAR" />
+	</resultMap>
+
+	<resultMap type="InformationLike" id="InformationLikeNum">
+		<id column="information_id" property="informationId"
+			jdbcType="VARCHAR" />
+		<result column="information_img" property="informationImg"
+			jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="selectByType" resultMap="typeMap">
+		SELECT * FROM fastype
+	</select>
+
+	<select id="selectByTime" resultMap="InformationMap">
+		SELECT * FROM fasinformation
+		GROUP BY `information_ reltime` DESC
+	</select>
+
+	<select id="selectById" parameterType="java.lang.String"
+		resultMap="InformationDetail">
+		SELECT * FROM fasinformation WHERE
+		information_id=#{informationId}
+	</select>
+
+	<select id="selectByLikeNum" resultMap="InformationLikeNum">
+		select * from
+		fasinformation where week(`information_ reltime`) =
+		week(now()) ORDER
+		BY information_fabulous DESC;
+	</select>
+</mapper>
