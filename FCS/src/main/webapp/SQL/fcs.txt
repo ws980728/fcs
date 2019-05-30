@@ -1,0 +1,90 @@
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : chen
+Source Server Version : 50725
+Source Host           : localhost:3306
+Source Database       : fcs
+
+Target Server Type    : MYSQL
+Target Server Version : 50725
+File Encoding         : 65001
+
+Date: 2019-05-30 20:18:17
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `fasinformation`
+-- ----------------------------
+DROP TABLE IF EXISTS `fasinformation`;
+CREATE TABLE `fasinformation` (
+  `information_id` varchar(50) NOT NULL,
+  `information_topic` varchar(50) NOT NULL,
+  `information_author` varchar(50) NOT NULL,
+  `information_content` varchar(2000) NOT NULL,
+  `information_fabulous` int(11) NOT NULL,
+  `information_ reltime` varchar(50) NOT NULL,
+  `information_status` int(11) NOT NULL DEFAULT '0',
+  `information_img` varchar(100) NOT NULL,
+  PRIMARY KEY (`information_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of fasinformation
+-- ----------------------------
+INSERT INTO `fasinformation` VALUES ('1', 'CARSYDA X RY联名款鞋履沈阳发布，国际设计师RY现场火爆签售！', 'Gillian', '5月26日，沈阳万象城空降一位国际明星设计师：Raphael Young，就上市不久的CARSYDA X RY联名合作系列鞋履进行现场签售活动。现场氛围热烈，近百位粉丝手排队等候设计“大神”RY的现身。', '100', '2018-10-12', '0', 'http://www.chenweisheng.com/FCS/image/information/f02.jpg');
+INSERT INTO `fasinformation` VALUES ('2', 'Kappa Omini 50周年， 潮流艺术先驱者Kappa玩转历史博物馆', '海报时尚网', 'Kappa Omini的诞生要追溯到1969年的一次“偶然”。在一次泳装产品目录的拍摄期间，一个男孩和一个女孩背靠背坐着的逆光剪影被摄影师记录了下来，这一画面被当时Kappa总裁Maurizio Vitale先生认为非常适合成为代表Kappa的品牌商标，于是充满浪漫色彩的Kappa Omini一直沿用至今，成为风靡全球的视觉符号。此后在Maurizio Vitale的支持下，意大利摄影师Oliviero Toscani主导了跳脱时代理念的广告摄影作品，Kappa品牌连同当时母公司旗下的牛仔裤品牌Jesus Jeans都凭借其张扬而大胆的手法，创造了一幕幕潮流经典画面，引起了社会上的广泛争议。', '500', '2019-5-30', '0', 'http://www.chenweisheng.com/FCS/image/information/f03.jpg');
+INSERT INTO `fasinformation` VALUES ('3', 'MISSOSE奇遇世界联合寺库 (SECOO) 发布2019秋冬新品：梦游理想世界！', 'Gillian', '2019年3月30日，中国本土高端童装品牌MISSOSE奇遇世界联合全球奢侈品服务平台SECOO寺库，于中国国际时装周上发布2019秋冬新品「梦游」系列。据悉，这是MISSOSE创始人兼设计总监席溪带领小朋友登上中国国际时装周舞台的第三次发布。在本次时装周上，MISSOSE延续了品牌一贯的艺术风格，从服饰设计到秀场装置，和小朋友一起打造奇遇世界充满童真的梦境。\r\n\r\n\r\n\r\n本季服饰设计的灵感来源为「梦游」，分仙美，运动，概念三个系列共50套服饰。除了延续品牌擅长把握的色彩搭配与面料选择外，继续探索了原创插画与服饰相结合的表达。联合多种面料形式，利用插画表现「梦游」“让想象力与一点点勇气游荡”的理想世界。', '40', '2019-5-30', '0', 'http://www.chenweisheng.com/FCS/image/information/f04.jpg');
+INSERT INTO `fasinformation` VALUES ('4', '有点帅的法式风格怎么穿？学学这位漂亮的时尚博主Alexandra Ricci吧！', '海报时尚网', '推荐一位美美的巴黎女孩Alexandra Ricci，是一位平面模特及时尚博主。她跟许多法国女孩一样，喜欢复古又带点甜美感的服装；却不是那种典型的甜姐儿，她也爱穿狩猎外套、卡其裤等帅气的行头，让人想到安妮·霍尔！', '100', '2019-5-28', '0', 'http://www.chenweisheng.com/FCS/image/information/f01.jpg');
+
+-- ----------------------------
+-- Table structure for `fastype`
+-- ----------------------------
+DROP TABLE IF EXISTS `fastype`;
+CREATE TABLE `fastype` (
+  `type_id` int(11) NOT NULL,
+  `type_number` int(11) NOT NULL,
+  `type_supcategpry` varchar(50) DEFAULT NULL,
+  `type_name` varchar(50) NOT NULL,
+  PRIMARY KEY (`type_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of fastype
+-- ----------------------------
+INSERT INTO `fastype` VALUES ('1', '1', null, '女装');
+INSERT INTO `fastype` VALUES ('2', '2', null, '男装');
+INSERT INTO `fastype` VALUES ('3', '3', null, '童装');
+INSERT INTO `fastype` VALUES ('4', '4', null, '内衣');
+INSERT INTO `fastype` VALUES ('5', '5', null, '休闲');
+INSERT INTO `fastype` VALUES ('6', '6', null, '牛仔');
+INSERT INTO `fastype` VALUES ('7', '7', null, '家纺');
+INSERT INTO `fastype` VALUES ('8', '8', null, '配饰');
+INSERT INTO `fastype` VALUES ('9', '9', null, '婚纱');
+INSERT INTO `fastype` VALUES ('10', '10', null, '箱包');
+INSERT INTO `fastype` VALUES ('11', '11', null, '皮草');
+INSERT INTO `fastype` VALUES ('12', '12', null, '陈列');
+
+-- ----------------------------
+-- Table structure for `fasuseraccount`
+-- ----------------------------
+DROP TABLE IF EXISTS `fasuseraccount`;
+CREATE TABLE `fasuseraccount` (
+  `user_id` varchar(50) NOT NULL,
+  `user_account` varchar(50) NOT NULL,
+  `user_password` varchar(50) NOT NULL,
+  `user_type` int(1) NOT NULL COMMENT '设计师：1，普通用户：2 ',
+  `user_regtime` varchar(50) NOT NULL,
+  `user_status` int(11) NOT NULL DEFAULT '0' COMMENT '用户状态 启用：0 停用：1',
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of fasuseraccount
+-- ----------------------------
+INSERT INTO `fasuseraccount` VALUES ('3f78a91a814111e9969e54e1adbba677', '李四', '202cb962ac59075b964b07152d234b70', '1', '2019-05-28 20:06:43', '0');
+INSERT INTO `fasuseraccount` VALUES ('4d6c61b8814111e9969e54e1adbba677', '李四', '202cb962ac59075b964b07152d234b70', '1', '2019-05-28 20:07:07', '0');
+INSERT INTO `fasuseraccount` VALUES ('af7775d6814111e9969e54e1adbba677', '李四', '202cb962ac59075b964b07152d234b70', '0', '2019-05-28 20:09:51', '0');
+INSERT INTO `fasuseraccount` VALUES ('d06e4cc5814211e9969e54e1adbba677', '李四', '202cb962ac59075b964b07152d234b70', '0', '2019-05-28 20:17:56', '0');
