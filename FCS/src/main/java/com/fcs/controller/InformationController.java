@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -28,7 +29,7 @@ public class InformationController {
 	InformationService informationService;
 
 	// 查询资讯列表,并以时间进行排序
-	@GetMapping
+	@PostMapping
 	@ResponseBody
 	@RequestMapping("/queryInformationByTime")
 	public Msg queryInformationByTime(@RequestParam(value = "pn", defaultValue = "1") Integer pn) {
@@ -55,7 +56,7 @@ public class InformationController {
 
 	// 获得轮播图
 	// 一周内点赞数最高的四条资讯信息
-	@GetMapping
+	@PostMapping
 	@ResponseBody
 	@RequestMapping("/shufflingImg")
 	public Msg shufflingImg() {
@@ -64,7 +65,7 @@ public class InformationController {
 	}
 
 	// 设计师分类
-	@GetMapping
+	@PostMapping
 	@ResponseBody
 	@RequestMapping("/queryType")
 	public Msg queryType() {
