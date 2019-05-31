@@ -1,5 +1,6 @@
 package com.fcs.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,14 +55,18 @@ public class InformationController {
 		return Msg.success().add("informationDetail", informationDetail);
 	}
 
-	// 获得轮播图
+	// 获得4张轮播图
 	// 一周内点赞数最高的四条资讯信息
 	@PostMapping
 	@ResponseBody
 	@RequestMapping("/shufflingImg")
 	public Msg shufflingImg() {
 		List<InformationLike> informationLikes = informationService.selectByLikeNum();
-		return Msg.success().add("informationLikes", informationLikes);
+		List<InformationLike> information = new ArrayList<InformationLike>();
+		for (int i = 0; i < 4; i++) {
+			information.add(informationLikes.get(i));
+		}
+		return Msg.success().add("information", information);
 	}
 
 	// 设计师分类

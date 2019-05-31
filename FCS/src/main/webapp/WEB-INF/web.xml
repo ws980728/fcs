@@ -9,7 +9,7 @@
 	<!-- needed for ContextLoaderListener -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:applicationContext.xml</param-value>
+		<param-value>classpath:applicationContext.xml,classpath:spring-redis.xml,classpath:spring-Kaptcha.xml</param-value>
 	</context-param>
 
 	<!-- Bootstraps the root web application context before servlet initialization -->
@@ -64,7 +64,7 @@
 		<filter-name>HiddenHttpMethodFilter</filter-name>
 		<url-pattern>/</url-pattern>
 		<url-pattern>*.htm</url-pattern><!-- 主要用于进行页面跳转 -->
-		<url-pattern>*.do</url-pattern>	<!-- 主要用于业务逻辑处理 -->	
+		<url-pattern>*.do</url-pattern>	<!-- 主要用于业务逻辑处理 -->
 	</filter-mapping>
 
 	<!-- 会话超时时间 -->
