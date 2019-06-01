@@ -44,8 +44,12 @@ public class UserController {
 	private JedisClient jedisClient;
 
 	// 获取注册验证码,在请求头返回token
+	@PostMapping
 	@RequestMapping("/kaptcha")
 	public void getkaptcha(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		response.setHeader("Access-Control-Expose-Headers",
+				"Cache-Control,Content-Type,Expires,Pragma,Content-Language,Last-Modified,token");
 		response.setDateHeader("Expires", 0);
 		response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
 		response.addHeader("Cache-Control", "post-check=0, pre-check=0");
@@ -54,7 +58,7 @@ public class UserController {
 
 		String capText = kaptchaProducer.createText();// 生成验证码
 		String token = UUID.randomUUID().toString();// 生成token
-		response.setHeader("Token", token);
+		response.addHeader("token", token);
 		jedisClient.set(token, capText);// 将token存入redis
 		jedisClient.expire(token, 1800);// 设置两分钟过期时间
 		TokenInfo tokenInfo = new TokenInfo(token, false);
@@ -72,15 +76,15 @@ public class UserController {
 	@PostMapping
 	@ResponseBody
 	@RequestMapping("/register")
-	public Msg register(UserAccount userAccount,@RequestParam("kaptcha") String kaptcha,HttpServletRequest request) {
-		//System.out.println("接收到的验证码："+kaptcha);
-		//验证码校验
+	public Msg register(UserAccount userAccount, @RequestParam("kaptcha") String kaptcha, HttpServletRequest request) {
+		// System.out.println("接收到的验证码："+kaptcha);
+		// 验证码校验
 		String token = request.getHeader("Token");
-		if(jedisClient.get(token) ==null || jedisClient.get(token)!=kaptcha) {
-			//System.out.println("正确的的验证码："+jedisClient.get(token));
+		if (jedisClient.get(token) == null || jedisClient.get(token) != kaptcha) {
+			// System.out.println("正确的的验证码："+jedisClient.get(token));
 			return Msg.fail().add("info", "验证码错误");
 		}
-		
+
 		// 密码进行MD5加密
 		userAccount.setUserPassword(MD5Util.MD5(userAccount.getUserPassword()));
 		// 创建注册日期
